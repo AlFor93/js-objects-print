@@ -30,13 +30,25 @@ function classe(){
     {"nome" : "Federica", "cognome" : "Verdi" , "età" : 21}
   ];
 
-  students.nome = prompt("Inserisci il nome di un nuovo studente");
-  students.cognome = prompt("Inserisci il cognome del nuovo studente");
-  students.età = Number(prompt("Inserisci l'età del nuovo studente"));
-  for (var caratteristiche in students){
-    console.log(students[caratteristiche]);
-  }
+  var studentNew = {};
+  studentNew.nome = prompt("Inserisci il nome di un nuovo studente");
+  studentNew.cognome = prompt("Inserisci il cognome del nuovo studente");
+  studentNew.età = Number(prompt("Inserisci l'età del nuovo studente"));
+  students.push(studentNew);
 
+  console.log(students);
+
+// FUNZIONE PER ORDINARE GLI OGGETTI ALL'INTERNO DELL'ARRAY IN BASE AL NOME
+  function getThingsOrdered(a, b){
+    var x = a.nome.toLowerCase();
+    var y = b.nome.toLowerCase();
+    if (x < y) {return -1;}
+    if (x > y) {return 1;}
+    return 0;
+  }
+  students.sort(getThingsOrdered);
+
+  // console.log(students);
   for (var i = 0; i < students.length; i++) {
     console.log (students[i]["nome"]+ " " + students[i]["cognome"]);
   }
